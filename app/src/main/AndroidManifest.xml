@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Musclo">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.Musclo" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false"
             android:label="Home"
