@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "463704611969",
+    "project_id": "musclo-bfb06",
+    "storage_bucket": "musclo-bfb06.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463704611969:android:6ad1ab176a4d1026f4c180",
+        "android_client_info": {
+          "package_name": "com.example.musclo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463704611969-5a0tl7tcpga4a2ja06b5t6jn7i761aoa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.musclo",
+            "certificate_hash": "fa38d66997ad6b50e45ccca3f13e995618e30891"
+          }
+        },
+        {
+          "client_id": "463704611969-hssle846k1ph5efjg4ujtkbldac9hev7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwvqKa5eu3GgyCzbDFvTkZ0jRU1lFqCQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463704611969-hssle846k1ph5efjg4ujtkbldac9hev7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

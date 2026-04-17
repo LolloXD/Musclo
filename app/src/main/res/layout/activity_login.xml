@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/login_background"
     android:gravity="center"
     android:padding="16dp">
@@ -56,12 +57,20 @@
             android:textSize="20sp"
             android:id="@+id/login_btn"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Google Login"
+            android:backgroundTint="@color/white"
+            android:text="Sign in with Google"
             android:textSize="18sp"
-            android:textColor="@color/white"
+            app:icon="@drawable/google"
+            app:iconSize="20dp"
+            app:iconGravity="start"
+            app:iconPadding="4dp"
+            app:iconTint="@color/black"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:id="@+id/gSignInBtn"
             android:layout_marginTop="32dp"/>
         
         <LinearLayout
