@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="50dp"
     android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -10,7 +11,7 @@
         android:id="@+id/signOutBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="640dp"
+        android:layout_marginTop="664dp"
         android:backgroundTint="@color/white"
         android:text="Sign out"
         android:textColor="@color/black"
@@ -26,13 +27,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="239dp" />
+        android:layout_marginTop="32dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.musclo.ui.theme.MuscloTheme
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 
 class HomeActivity : ComponentActivity() {
@@ -22,6 +25,7 @@ class HomeActivity : ComponentActivity() {
     // X login google
 
     private lateinit var auth : FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,12 +35,28 @@ class HomeActivity : ComponentActivity() {
 
         val email = intent.getStringExtra("Email")
         val displayName = intent.getStringExtra("Name")
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        val nome = intent.getStringExtra("USER_NAME")
 
-        findViewById<TextView>(R.id.textView).text = email + "\n" + displayName
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        findViewById<TextView>(R.id.textView).text = "Ciao, $nome!"
 
         findViewById<Button>(R.id.signOutBtn).setOnClickListener {
-            auth.signOut()
-            startActivity(Intent(this , MainActivity::class.java))
+            googleSignInClient.signOut().addOnCompleteListener {
+
+                googleSignInClient.revokeAccess().addOnCompleteListener {
+
+                    auth.signOut()
+
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
         }
 
 

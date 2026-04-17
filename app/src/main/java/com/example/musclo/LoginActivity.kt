@@ -87,8 +87,9 @@ class LoginActivity : ComponentActivity() {
             {
                 val intent : Intent = Intent(this , HomeActivity::class.java)
                 intent.putExtra( "Loggato come" , account.email)
-                intent.putExtra( "Ciao" , account.displayName)
+                intent.putExtra( "USER_NAME" , account.displayName)
                 startActivity(intent)
+                finish()
             }
             else{
                 Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
