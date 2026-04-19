@@ -63,4 +63,6 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation("com.google.android.gms:play-services-auth:21.3.0")
+
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 }

@@ -3,6 +3,7 @@ package com.example.musclo
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,6 +15,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.musclo.ui.theme.MuscloTheme
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -21,6 +24,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 
 class HomeActivity : ComponentActivity() {
+
+    // X lista esercizi (RecycleView)
+
+    private lateinit var recyclerView: RecyclerView
 
     // X login google
 
@@ -59,7 +66,24 @@ class HomeActivity : ComponentActivity() {
             }
         }
 
+        // X lista esercizi
+
+        recyclerView = findViewById(R.id.recyclerView)
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val exerciseList = ArrayList<ExerciseModel>()
+
+        exerciseList.add(ExerciseModel("Chest Press", R.drawable.chest_press))
+        // Continuare ad aggiungere..
+
+        val adapter = ExerciseAdapter(exerciseList)
+
+        recyclerView.adapter = adapter
+
 
 
     }
+
+
 }
