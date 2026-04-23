@@ -3,27 +3,17 @@ package com.example.musclo
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.musclo.ui.theme.MuscloTheme
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 
-class HomeActivity : ComponentActivity() {
+class HomeActivity : AppCompatActivity() {
 
     // X lista esercizi (RecycleView)
 
@@ -74,16 +64,119 @@ class HomeActivity : ComponentActivity() {
 
         val exerciseList = ArrayList<ExerciseModel>()
 
-        exerciseList.add(ExerciseModel("Chest Press", R.drawable.chest_press))
+
+
         // Continuare ad aggiungere..
 
-        val adapter = ExerciseAdapter(exerciseList)
 
-        recyclerView.adapter = adapter
+
+            val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+
+
+            exerciseList.add(
+                ExerciseModel(
+                    "Chest Press",
+                    R.drawable.chest_press,
+                    R.drawable.chest_press_animated
+
+
+
+                )
+            )
+
+        exerciseList.add(
+            ExerciseModel(
+                "Curl a martello",
+                R.drawable.curl_martello,
+                R.drawable.hammer_curl_animated
+            )
+        )
+
+        exerciseList.add(
+            ExerciseModel(
+                "Panca Inclinata",
+                R.drawable.distensioni_con_bilanciere_su_panca_inclinata,
+                R.drawable.panca_inclinata_animated
+            )
+        )
+
+        exerciseList.add(
+            ExerciseModel(
+                "Lat pulldown",
+                R.drawable.lat_pulldown,
+                R.drawable.lat_pulldown_animated
+            )
+        )
+
+        exerciseList.add(
+            ExerciseModel(
+                "Leg curl",
+                R.drawable.leg_curl,
+                R.drawable.leg_curl_animated
+            )
+        )
+
+        exerciseList.add(
+            ExerciseModel(
+                "Leg extension",
+                R.drawable.leg_extension,
+                R.drawable.leg_extension_animated
+            )
+        )
+
+        exerciseList.add(
+            ExerciseModel(
+                "Leg press",
+                R.drawable.leg_press,
+                R.drawable.leg_press_animated
+            )
+        )
+
+        exerciseList.add(
+            ExerciseModel(
+                "Panca piana",
+                R.drawable.panca_piana,
+                R.drawable.panca_piana_animated
+            )
+        )
+
+        exerciseList.add(
+            ExerciseModel(
+                "Squat con bilanciere",
+                R.drawable.squat_con_bilanciere,
+                R.drawable.squat_bilanciere_animated
+            )
+        )
+
+        exerciseList.add(
+            ExerciseModel(
+                "Stacco con bilanciere",
+                R.drawable.stacco_bilanciere,
+                R.drawable.stacco_bilanciere_animated
+            )
+        )
+
+
+
+            val adapter = ExerciseAdapter(exerciseList, object : OnItemClickListener {
+                override fun onItemClick(position: Int) {
+
+                    val exercise = exerciseList[position]
+
+                    val intent = Intent(this@HomeActivity, DetailActivity::class.java)
+                    intent.putExtra("gif", exercise.exerciseGif)
+
+                    startActivity(intent)
+                }
+            })
+
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            recyclerView.adapter = adapter
+        }
 
 
 
     }
 
 
-}

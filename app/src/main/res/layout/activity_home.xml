@@ -9,10 +9,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="16dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -23,21 +24,18 @@
 
     </androidx.core.widget.NestedScrollView>
 
-
-
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/signOutBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="664dp"
+        android:layout_width="164dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="644dp"
         android:backgroundTint="@color/white"
-        android:text="Sign out"
+        android:text="Esci"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,7 +43,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Esercizi"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"

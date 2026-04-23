@@ -3,4 +3,6 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_chest_press">ChestPressActivity</string>
+    <string name="title_activity_detail">DetailActivity</string>
 </resources>

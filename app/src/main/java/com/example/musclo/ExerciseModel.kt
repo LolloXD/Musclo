@@ -2,5 +2,6 @@ package com.example.musclo
 
 data class ExerciseModel (
     val exerciseName : String,
-    val exerciseImage : Int
+    val exerciseImage : Int,
+    val exerciseGif : Int
 )
