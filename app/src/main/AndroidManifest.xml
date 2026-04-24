@@ -14,6 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Musclo">
         <activity
+            android:name=".BMIActivity"
+            android:exported="false"
+            android:label="@string/title_activity_bmiactivity"
+            android:theme="@style/Theme.Musclo" />
+        <activity
             android:name=".DetailActivity"
             android:exported="false"
             android:label="@string/title_activity_detail"

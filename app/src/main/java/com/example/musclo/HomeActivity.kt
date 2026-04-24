@@ -195,7 +195,19 @@ class HomeActivity : AppCompatActivity() {
 
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = adapter
+
+        val btnBMI = findViewById<Button>(R.id.BMIBtn)
+
+        btnBMI.setOnClickListener {
+            val intent = Intent(this@HomeActivity, BMIActivity::class.java)
+            startActivity(intent)
         }
+
+
+        }
+
+
+
 
 
 
