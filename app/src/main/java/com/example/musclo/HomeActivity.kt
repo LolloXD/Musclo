@@ -78,7 +78,9 @@ class HomeActivity : AppCompatActivity() {
                 ExerciseModel(
                     "Chest Press",
                     R.drawable.chest_press,
-                    R.drawable.chest_press_animated
+                    R.drawable.chest_press_animated,
+                    "1. Sdraiati sulla panca con i piedi ben piantati a terra\n2. Impugna i manubri all’altezza del petto\n3. Spingi verso l’alto senza bloccare i gomiti\n4. Scendi lentamente controllando il movimento\n5. Mantieni petto aperto e scapole stabili",
+                    R.drawable.chestpress_man
 
 
 
@@ -89,7 +91,9 @@ class HomeActivity : AppCompatActivity() {
             ExerciseModel(
                 "Curl a martello",
                 R.drawable.curl_martello,
-                R.drawable.hammer_curl_animated
+                R.drawable.hammer_curl_animated,
+                "1. In piedi con manubri lungo i fianchi\n2. Palmi rivolti verso il corpo\n3. Solleva i manubri senza oscillare il busto\n4. Contrai i bicipiti in alto\n5. Scendi lentamente con controllo",
+                R.drawable.curl_martello_man
             )
         )
 
@@ -97,7 +101,9 @@ class HomeActivity : AppCompatActivity() {
             ExerciseModel(
                 "Panca Inclinata",
                 R.drawable.distensioni_con_bilanciere_su_panca_inclinata,
-                R.drawable.panca_inclinata_animated
+                R.drawable.panca_inclinata_animated,
+                "1. Sdraiati su panca inclinata 30–45°\n2. Porta il bilanciere sopra il petto alto\n3. Scendi lentamente controllando il movimento\n4. Spingi verso l’alto senza bloccare i gomiti\n5. Mantieni spalle stabili",
+                R.drawable.panca_inclinata_man
             )
         )
 
@@ -105,7 +111,9 @@ class HomeActivity : AppCompatActivity() {
             ExerciseModel(
                 "Lat pulldown",
                 R.drawable.lat_pulldown,
-                R.drawable.lat_pulldown_animated
+                R.drawable.lat_pulldown_animated,
+                "1. Siediti con schiena dritta\n2. Afferra la barra con presa ampia\n3. Tira verso il petto alto\n4. Controlla la risalita del peso\n5. Evita di dondolare il busto",
+                R.drawable.lat_pulldown_man
             )
         )
 
@@ -113,7 +121,9 @@ class HomeActivity : AppCompatActivity() {
             ExerciseModel(
                 "Leg curl",
                 R.drawable.leg_curl,
-                R.drawable.leg_curl_animated
+                R.drawable.leg_curl_animated,
+                "1. Posizionati alla macchina e blocca le caviglie\n2. Fletti le gambe verso i glutei\n3. Contrai i femorali in alto\n4. Scendi lentamente\n5. Mantieni controllo del movimento",
+                R.drawable.leg_curl_man
             )
         )
 
@@ -121,7 +131,9 @@ class HomeActivity : AppCompatActivity() {
             ExerciseModel(
                 "Leg extension",
                 R.drawable.leg_extension,
-                R.drawable.leg_extension_animated
+                R.drawable.leg_extension_animated,
+                "1. Siediti alla macchina con schiena appoggiata\n2. Estendi le gambe verso l’alto\n3. Contrai i quadricipiti in alto\n4. Scendi lentamente senza rilassare il peso\n5. Movimento controllato",
+                R.drawable.leg_extension_man
             )
         )
 
@@ -129,7 +141,9 @@ class HomeActivity : AppCompatActivity() {
             ExerciseModel(
                 "Leg press",
                 R.drawable.leg_press,
-                R.drawable.leg_press_animated
+                R.drawable.leg_press_animated,
+                "1. Piedi alla larghezza spalle sulla pedana\n2. Scendi fino a 90° con le ginocchia\n3. Spingi senza bloccare le ginocchia\n4. Mantieni schiena sempre appoggiata\n5. Non sollevare i glutei",
+                R.drawable.leg_press_man
             )
         )
 
@@ -137,7 +151,9 @@ class HomeActivity : AppCompatActivity() {
             ExerciseModel(
                 "Panca piana",
                 R.drawable.panca_piana,
-                R.drawable.panca_piana_animated
+                R.drawable.panca_piana_animated,
+                "1. Sdraiati con piedi ben piantati\n2. Afferra il bilanciere leggermente più largo delle spalle\n3. Scendi controllando fino al petto\n4. Spingi verso l’alto in modo stabile\n5. Mantieni scapole addotte",
+                R.drawable.panca_piana_man
             )
         )
 
@@ -145,7 +161,9 @@ class HomeActivity : AppCompatActivity() {
             ExerciseModel(
                 "Squat con bilanciere",
                 R.drawable.squat_con_bilanciere,
-                R.drawable.squat_bilanciere_animated
+                R.drawable.squat_bilanciere_animated,
+                "1. Bilanciere sulle spalle\n2. Piedi leggermente più larghi delle spalle\n3. Scendi portando i fianchi indietro\n4. Mantieni schiena dritta\n5. Risali spingendo dai talloni",
+                R.drawable.squat_bilanciere_man
             )
         )
 
@@ -153,7 +171,9 @@ class HomeActivity : AppCompatActivity() {
             ExerciseModel(
                 "Stacco con bilanciere",
                 R.drawable.stacco_bilanciere,
-                R.drawable.stacco_bilanciere_animated
+                R.drawable.stacco_bilanciere_animated,
+                "1. Piedi alla larghezza spalle\n2. Schiena dritta e presa salda\n3. Solleva il bilanciere estendendo anche e ginocchia\n4. Mantieni il peso vicino al corpo\n5. Scendi controllando il movimento",
+                R.drawable.stacchi_man
             )
         )
 
@@ -166,6 +186,8 @@ class HomeActivity : AppCompatActivity() {
 
                     val intent = Intent(this@HomeActivity, DetailActivity::class.java)
                     intent.putExtra("gif", exercise.exerciseGif)
+                    intent.putExtra("steps", exercise.steps)
+                    intent.putExtra("muscles", exercise.musclesImage)
 
                     startActivity(intent)
                 }
