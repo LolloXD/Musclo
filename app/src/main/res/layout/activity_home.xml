@@ -8,6 +8,26 @@
     android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="🔍 Cerca esercizio..."
+            android:padding="12dp"
+            android:layout_marginTop="90dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -20,15 +40,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="134dp" />
+            tools:layout_editor_absoluteY="100" />
 
     </androidx.core.widget.NestedScrollView>
 
     <Button
         android:id="@+id/BMIBtn"
-        android:layout_width="164dp"
+        android:layout_width="90dp"
         android:layout_height="38dp"
         android:layout_marginTop="50dp"
+        android:layout_marginRight="120dp"
         android:backgroundTint="@color/white"
         android:text="BMI"
         android:textColor="@color/black"
@@ -42,9 +63,10 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/signOutBtn"
-        android:layout_width="164dp"
+        android:layout_width="90dp"
         android:layout_height="38dp"
-        android:layout_marginTop="644dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
         android:backgroundTint="@color/white"
         android:text="Esci"
         android:textColor="@color/black"

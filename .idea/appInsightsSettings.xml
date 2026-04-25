@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.musclo" />
+                  <option name="mobileSdkAppId" value="1:463704611969:android:6ad1ab176a4d1026f4c180" />
+                  <option name="projectId" value="musclo-bfb06" />
+                  <option name="projectNumber" value="463704611969" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
