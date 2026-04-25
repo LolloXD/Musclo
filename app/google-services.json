@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "463704611969-6u34566mhf1setd2sid9j573lpeclugq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.musclo",
+            "certificate_hash": "30a1090ce7d3b1c69ba3007997b933cdfe7be57d"
+          }
+        },
+        {
           "client_id": "463704611969-hssle846k1ph5efjg4ujtkbldac9hev7.apps.googleusercontent.com",
           "client_type": 3
         }
