@@ -3,6 +3,7 @@ package com.example.musclo
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
@@ -18,15 +19,21 @@ class HomeActivity : AppCompatActivity() {
     // X lista esercizi (RecycleView)
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var filteredList: ArrayList<ExerciseModel> //Lista filtrata
+    private lateinit var adapter: ExerciseAdapter
+    private lateinit var exerciseList: ArrayList<ExerciseModel>
 
     // X login google
 
     private lateinit var auth : FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        exerciseList = ArrayList()
+        filteredList = ArrayList()
 
         auth = FirebaseAuth.getInstance()
 
@@ -62,7 +69,7 @@ class HomeActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val exerciseList = ArrayList<ExerciseModel>()
+
 
 
 
@@ -70,7 +77,7 @@ class HomeActivity : AppCompatActivity() {
 
 
 
-            val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
 
 
 
@@ -177,12 +184,15 @@ class HomeActivity : AppCompatActivity() {
             )
         )
 
+        filteredList.addAll(exerciseList)
 
 
-            val adapter = ExerciseAdapter(exerciseList, object : OnItemClickListener {
+
+
+             adapter = ExerciseAdapter(filteredList, object : OnItemClickListener {
                 override fun onItemClick(position: Int) {
 
-                    val exercise = exerciseList[position]
+                    val exercise = filteredList[position]
 
                     val intent = Intent(this@HomeActivity, DetailActivity::class.java)
                     intent.putExtra("gif", exercise.exerciseGif)
@@ -193,8 +203,25 @@ class HomeActivity : AppCompatActivity() {
                 }
             })
 
+
+
+
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = adapter
+            val searchBar = findViewById<EditText>(R.id.searchBar)
+        searchBar.addTextChangedListener(object : android.text.TextWatcher {
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                filter(s.toString())
+            }
+
+            override fun afterTextChanged(s: android.text.Editable?) {}
+        })
+
+
+
 
         val btnBMI = findViewById<Button>(R.id.BMIBtn)
 
@@ -206,11 +233,33 @@ class HomeActivity : AppCompatActivity() {
 
         }
 
+    private fun filter(text: String) {
+
+        filteredList.clear()
+
+        if (text.isEmpty()) {
+            filteredList.addAll(exerciseList)
+        } else {
+            val query = text.lowercase()
+
+            for (item in exerciseList) {
+                if (item.exerciseName.lowercase().contains(query)) {
+                    filteredList.add(item)
+                }
+            }
+        }
+
+        adapter.notifyDataSetChanged()
+    }
+
 
 
 
 
 
     }
+
+
+
 
 
