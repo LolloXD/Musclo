@@ -1,6 +1,10 @@
 package com.example.musclo
 
+import android.R.attr.name
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -12,12 +16,70 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.musclo.ui.theme.MuscloTheme
+import com.google.firebase.auth.FirebaseAuth
 
-class SignInActivity : ComponentActivity()
-{
+class SignInActivity : ComponentActivity() {
+
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin)
-    }
 
+        // Firebase
+        auth = FirebaseAuth.getInstance()
+
+        // Views
+        val nameInput = findViewById<EditText>(R.id.name_input)
+        val emailInput = findViewById<EditText>(R.id.email_input)
+        val passwordInput = findViewById<EditText>(R.id.password_input)
+        val registerBtn = findViewById<Button>(R.id.register_btn)
+
+        registerBtn.setOnClickListener {
+
+
+            val name = nameInput.text.toString()
+            val email = emailInput.text.toString()
+            val password = passwordInput.text.toString()
+
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Compila tutti i campi", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(this, "Email non valida", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (password.length < 6) {
+                Toast.makeText(this, "Password minimo 6 caratteri", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+
+                        val user = FirebaseAuth.getInstance().currentUser
+
+                        val profileUpdates = com.google.firebase.auth.UserProfileChangeRequest.Builder()
+                            .setDisplayName(name)
+                            .build()
+
+                        user?.updateProfile(profileUpdates)
+
+                        Toast.makeText(this, "Registrato!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+            // Per mostrare il nome registrandosi con email e password
+
+
+
+        }
+    }
 }
+
+
+
+

@@ -63,6 +63,17 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
+        // Per mostrare il nome dell'utente "Ciao ..." registrato con email e password
+
+        val txtWelcome = findViewById<TextView>(R.id.textView)
+
+        val user = FirebaseAuth.getInstance().currentUser
+        val name = user?.displayName
+
+        txtWelcome.text = "Ciao, ${name ?: "utente"}!"
+
+
+
         // X lista esercizi
 
         recyclerView = findViewById(R.id.recyclerView)
