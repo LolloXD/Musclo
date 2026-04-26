@@ -6,6 +6,19 @@
     android:padding="16dp"
     android:layout_gravity="center">
 
+    <TextView
+        android:id="@+id/txtInfoBMI"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Per aiutarti a scoprire il tuo Indice di Massa Corporea, abbiamo realizzato un semplice calcolatore del BMI."
+        android:textSize="14sp"
+        android:layout_marginTop="15dp"
+        android:lineSpacingExtra="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <EditText
         android:id="@+id/etPeso"
         android:layout_width="0dp"

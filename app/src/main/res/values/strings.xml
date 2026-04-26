@@ -6,4 +6,5 @@
     <string name="title_activity_chest_press">ChestPressActivity</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_bmiactivity">BMIActivity</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
 </resources>
