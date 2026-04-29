@@ -37,6 +37,7 @@ class SignInActivity : ComponentActivity() {
         registerBtn.setOnClickListener {
 
 
+
             val name = nameInput.text.toString()
             val email = emailInput.text.toString()
             val password = passwordInput.text.toString()
@@ -70,6 +71,18 @@ class SignInActivity : ComponentActivity() {
 
                         Toast.makeText(this, "Registrato!", Toast.LENGTH_SHORT).show()
                     }
+
+                    else {
+
+                        Toast.makeText(
+                            this,
+                            "ERRORE: ${task.exception?.message}",
+                            Toast.LENGTH_LONG
+                        ).show()
+
+                    }
+
+                }
                 }
 
             // Per mostrare il nome registrandosi con email e password
@@ -78,7 +91,7 @@ class SignInActivity : ComponentActivity() {
 
         }
     }
-}
+
 
 
 
