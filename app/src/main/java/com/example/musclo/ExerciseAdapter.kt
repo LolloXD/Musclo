@@ -12,12 +12,18 @@ import androidx.recyclerview.widget.RecyclerView
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlin.jvm.java
 
+
+// Prende la lista degli esercizi, listener per gestire il click sugli elementi
+// ViewHolder rappresenta un singolo elemento della lista (Infatti contiene nome e immagine dell'esercizio
+
 class ExerciseAdapter(
-    private val exerciseList: ArrayList<ExerciseModel>, private val listener: OnItemClickListener) : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
+    private val exerciseList: ArrayList<ExerciseModel>, private val listener: OnItemClickListener) : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>()  {
     class ViewHolder(ItemView : View, listener: OnItemClickListener) : RecyclerView.ViewHolder(ItemView)
     {
         val exerciseName = itemView.findViewById<TextView>(R.id.exercise_name_tv)
         val exerciseImage = itemView.findViewById<CircleImageView>(R.id.exercise_image)
+
+        // Click elemento
 
         init {
             itemView.setOnClickListener {
@@ -26,6 +32,8 @@ class ExerciseAdapter(
         }
     }
 
+
+    // Creata la view per ogni elemento attraverso item_exercise.xml
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_exercise, parent, false)
@@ -33,7 +41,7 @@ class ExerciseAdapter(
         return ViewHolder(view, listener)
     }
 
-
+    // Per ogniu posizione del recycle uso il nome e l'immagine dell'esercizio
     override fun onBindViewHolder(holder: ExerciseAdapter.ViewHolder, position: Int) {
         val exercise = exerciseList[position]
 
@@ -42,6 +50,7 @@ class ExerciseAdapter(
 
     }
 
+    // Quanti elementi ci sono nella lista
     override fun getItemCount(): Int {
         return exerciseList.size
     }

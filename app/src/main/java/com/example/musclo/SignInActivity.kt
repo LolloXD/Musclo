@@ -28,12 +28,13 @@ class SignInActivity : ComponentActivity() {
         // Firebase
         auth = FirebaseAuth.getInstance()
 
-        // Views
+        // Views (Riferimenti campi di layout)
         val nameInput = findViewById<EditText>(R.id.name_input)
         val emailInput = findViewById<EditText>(R.id.email_input)
         val passwordInput = findViewById<EditText>(R.id.password_input)
         val registerBtn = findViewById<Button>(R.id.register_btn)
 
+        // Quando premi sulk bottone, leggi i dati inseriti
         registerBtn.setOnClickListener {
 
 
@@ -57,9 +58,12 @@ class SignInActivity : ComponentActivity() {
                 return@setOnClickListener
             }
 
+            // Creazione utente firebase
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
+
+                        // Se ha successo, prendo il nome utente e imposto il nome (Per poi salvarlo sulla console di firebase)
 
                         val user = FirebaseAuth.getInstance().currentUser
 

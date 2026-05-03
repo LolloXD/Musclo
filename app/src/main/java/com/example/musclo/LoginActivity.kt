@@ -95,6 +95,8 @@ class LoginActivity : ComponentActivity() //Creiamo un attività che estende Com
         // Fino a qui email/password
 
         }
+
+    // Apre la schermata di scelta account
     private fun signInGoogle()
     {
         val signInIntent = googleSignInClient.signInIntent
@@ -103,6 +105,7 @@ class LoginActivity : ComponentActivity() //Creiamo un attività che estende Com
 
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
     {
+        // Se login okay, ottieni l'account google
             result ->
         if (result.resultCode == Activity.RESULT_OK)
         {
@@ -112,6 +115,7 @@ class LoginActivity : ComponentActivity() //Creiamo un attività che estende Com
     }
 
     private fun handleResults(task: Task<GoogleSignInAccount>) {
+        // Account entrato
         if (task.isSuccessful)
         {
             val account : GoogleSignInAccount? = task.result
@@ -120,6 +124,7 @@ class LoginActivity : ComponentActivity() //Creiamo un attività che estende Com
                 updateUI(account)
             }
         }
+        // Mostra errore
         else
         {
             Toast.makeText(this, task.exception.toString(), Toast.LENGTH_SHORT).show()
@@ -128,16 +133,21 @@ class LoginActivity : ComponentActivity() //Creiamo un attività che estende Com
 
 
     private fun updateUI(account: GoogleSignInAccount) {
+        // Converte l'account google in credenziali firebase
         val credential = GoogleAuthProvider.getCredential(account.idToken , null)
+        // Firebase autentica l'utente
         auth.signInWithCredential(credential).addOnCompleteListener{
             if (it.isSuccessful)
             {
+                // Passi alla schermata principale
                 val intent : Intent = Intent(this , HomeActivity::class.java)
                 intent.putExtra( "Loggato come" , account.email)
                 intent.putExtra( "USER_NAME" , account.displayName)
+                // Il finish serve per evitare all'utente di tornare indietro alla schermata di login
                 startActivity(intent)
                 finish()
             }
+            // Mostra errore
             else{
                 Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
             }

@@ -64,8 +64,8 @@
 
     <ImageView
         android:id="@+id/imgMuscoli"
-        android:layout_width="318dp"
-        android:layout_height="326dp"
+        android:layout_width="273dp"
+        android:layout_height="278dp"
         android:layout_marginBottom="-200dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@id/txtSteps"

@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.activity.ComponentActivity
 import com.bumptech.glide.Glide
 
-class DetailActivity : ComponentActivity() {
+class DetailActivity : ComponentActivity() { // Parte all'interno degli esercizi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

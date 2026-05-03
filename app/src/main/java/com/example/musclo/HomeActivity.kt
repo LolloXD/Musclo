@@ -211,13 +211,16 @@ class HomeActivity : AppCompatActivity() {
 
 
 
+        // quando clicchi su un esercizio..
 
              adapter = ExerciseAdapter(filteredList, object : OnItemClickListener {
                 override fun onItemClick(position: Int) {
 
                     val exercise = filteredList[position]
 
+                    // Va ai dettagli
                     val intent = Intent(this@HomeActivity, DetailActivity::class.java)
+                    // Passando i dati
                     intent.putExtra("gif", exercise.exerciseGif)
                     intent.putExtra("steps", exercise.steps)
                     intent.putExtra("muscles", exercise.musclesImage)
@@ -229,6 +232,8 @@ class HomeActivity : AppCompatActivity() {
 
 
 
+
+
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = adapter
             val searchBar = findViewById<EditText>(R.id.searchBar)
@@ -236,6 +241,7 @@ class HomeActivity : AppCompatActivity() {
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
+            // Ogni volta che scrivo sulla barra di ricerca, richiama la funzione filtro
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 filter(s.toString())
             }
@@ -246,9 +252,11 @@ class HomeActivity : AppCompatActivity() {
 
 
 
+        // Bottone BMI
         val btnBMI = findViewById<Button>(R.id.BMIBtn)
 
         btnBMI.setOnClickListener {
+            // Apre schermata BMI
             val intent = Intent(this@HomeActivity, BMIActivity::class.java)
             startActivity(intent)
         }
@@ -256,16 +264,22 @@ class HomeActivity : AppCompatActivity() {
 
         }
 
+    // Ricerca
     private fun filter(text: String) {
 
+        // Riparto da zero ogni volta
         filteredList.clear()
 
+        // Se il campo è vuoto, mostra tutti gli esercizi
         if (text.isEmpty()) {
             filteredList.addAll(exerciseList)
-        } else {
+        }
+        // Rendi tutto minuscolo per evitare conflitti con le maiuscole
+        else {
             val query = text.lowercase()
 
             for (item in exerciseList) {
+                // Se il nome contiene ciò che hai scritto, si aggiunge alla lista
                 if (item.exerciseName.lowercase().contains(query)) {
                     filteredList.add(item)
                 }
