@@ -195,6 +195,18 @@ class HomeActivity : AppCompatActivity() {
             )
         )
 
+        exerciseList.add(
+            ExerciseModel(
+                "Croci con manubrio",
+                R.drawable.croci_manubrio,
+                R.drawable.croci_manubrio_animated,
+                "1. Sdraiati sulla panca con piedi ben saldi a terra\n2. Tieni schiena aderente e gomiti leggermente piegati\n3. Apri le braccia lateralmente con movimento controllato\n4. Mantieni i manubri in linea con il petto senza forzare le spalle\n5. Chiudi le braccia lentamente contraendo il petto",
+                R.drawable.croci_manubrio_man
+            )
+        )
+
+
+
         filteredList.addAll(exerciseList)
 
 

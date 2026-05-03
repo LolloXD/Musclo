@@ -1,6 +1,6 @@
 package com.example.musclo
 
-data class ExerciseModel (
+data class ExerciseModel ( //Classe che contiene i dati dell'esercizio
     val exerciseName : String,
     val exerciseImage : Int,
     val exerciseGif : Int,

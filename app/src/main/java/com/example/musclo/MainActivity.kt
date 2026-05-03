@@ -30,20 +30,20 @@ import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.delay
 import java.util.logging.Handler
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()
+{
+    override fun onCreate(savedInstanceState: Bundle?) //funzione che viene chiamata quando viene creato l'activity
+    {
+        super.onCreate(savedInstanceState) // Inzializza l'activity
+        setContentView(R.layout.activity_main) //quale grafica usare per la schermata
 
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         supportActionBar?.hide() //nasconde la barra di titolo
 
 
         // Splash screen
 
-        android.os.Handler().postDelayed(
+        android.os.Handler().postDelayed( //Imposta un ritardo di 3 secondi prima di mostrare la schermata di login
             {
                 val intent = Intent(this@MainActivity, LoginActivity::class.java)
                 startActivity(intent)

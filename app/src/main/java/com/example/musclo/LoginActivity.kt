@@ -26,35 +26,41 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
-class LoginActivity : ComponentActivity() {
+class LoginActivity : ComponentActivity() //Creiamo un attività che estende ComponentActivity
+{
 
-    private lateinit var auth : FirebaseAuth
-    private lateinit var googleSignInClient : GoogleSignInClient
+    private lateinit var auth : FirebaseAuth  //Serve per gestire l'autenticazione Firebase
+    private lateinit var googleSignInClient : GoogleSignInClient // Serve per gestire l'autenticazione con Google
 
-    override fun onCreate(savedInstanceState: Bundle?)
+
+    override fun onCreate(savedInstanceState: Bundle?)  //funzione che viene chiamata quando viene creato l'activity
     {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        super.onCreate(savedInstanceState) // Inzializza l'activity
+        setContentView(R.layout.activity_login) //Dice quale grafica usare
 
-        auth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance() //Istanza fire per login
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN) //Creazione dell'oggetto GoogleSignInOptions per gestire l'autenticazione con Google
+            .requestIdToken(getString(R.string.default_web_client_id)) //Collega google al firebase, il token identifica utente
+            .requestEmail() //Ottenere email dell'utente
+            .build() //Costruisce oggetto
 
-        googleSignInClient = GoogleSignIn.getClient(this , gso)
+        googleSignInClient = GoogleSignIn.getClient(this , gso) //Oggetto per aprire login di google
 
         findViewById<Button>(R.id.gSignInBtn).setOnClickListener {
             signInGoogle()
 
-        }
+        }//Apre un altra schermata serve per registrarsi
+
         findViewById<Button>(R.id.register_btn).setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
         }
 
         // Fino a qui google
+
+
+        //Campi email/password
 
         val emailInput = findViewById<EditText>(R.id.email_input)
         val passwordInput = findViewById<EditText>(R.id.password_input)
