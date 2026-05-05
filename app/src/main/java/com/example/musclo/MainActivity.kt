@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity()
 
         android.os.Handler().postDelayed( //Imposta un ritardo di 3 secondi prima di mostrare la schermata di login
             {
-                val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                val intent = Intent(this@MainActivity, LoginActivity::class.java) //Passaggio da splash screen a login
                 startActivity(intent)
                 finish() // Se no si può tornare indietro sulla schermata, che non va bene
             }, (3000)

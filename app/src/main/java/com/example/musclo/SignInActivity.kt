@@ -26,7 +26,7 @@ class SignInActivity : ComponentActivity() {
         setContentView(R.layout.activity_signin)
 
         // Firebase
-        auth = FirebaseAuth.getInstance()
+            auth = FirebaseAuth.getInstance()
 
         // Views (Riferimenti campi di layout)
         val nameInput = findViewById<EditText>(R.id.name_input)
@@ -37,33 +37,32 @@ class SignInActivity : ComponentActivity() {
         // Quando premi sulk bottone, leggi i dati inseriti
         registerBtn.setOnClickListener {
 
-
-
+            // Prende i dati inseriti dall'utente
             val name = nameInput.text.toString()
             val email = emailInput.text.toString()
             val password = passwordInput.text.toString()
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Compila tutti i campi", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Compila tutti i campi", Toast.LENGTH_SHORT).show()  //compila tutti i campi
                 return@setOnClickListener
             }
 
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                Toast.makeText(this, "Email non valida", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Email non valida", Toast.LENGTH_SHORT).show() //formato email
                 return@setOnClickListener
             }
 
             if (password.length < 6) {
-                Toast.makeText(this, "Password minimo 6 caratteri", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Password minimo 6 caratteri", Toast.LENGTH_SHORT).show() //minimo 6 caratteri
                 return@setOnClickListener
             }
 
-            // Creazione utente firebase
-            auth.createUserWithEmailAndPassword(email, password)
+
+            auth.createUserWithEmailAndPassword(email, password)  //Crea su firebase l'account
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
 
-                        // Se ha successo, prendo il nome utente e imposto il nome (Per poi salvarlo sulla console di firebase)
+                        //Controlla se la registrazione è andata a buon fine
 
                         val user = FirebaseAuth.getInstance().currentUser
 
@@ -74,9 +73,10 @@ class SignInActivity : ComponentActivity() {
                         user?.updateProfile(profileUpdates)
 
                         Toast.makeText(this, "Registrato!", Toast.LENGTH_SHORT).show()
-                    }
+                    }//Controllo se andato con successo e aggiornamento account firebase con nome
 
-                    else {
+                    else
+                    {
 
                         Toast.makeText(
                             this,
@@ -85,14 +85,8 @@ class SignInActivity : ComponentActivity() {
                         ).show()
 
                     }
-
                 }
                 }
-
-            // Per mostrare il nome registrandosi con email e password
-
-
-
         }
     }
 

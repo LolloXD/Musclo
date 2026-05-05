@@ -1,5 +1,6 @@
 package com.example.musclo
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -18,7 +19,7 @@ class HomeActivity : AppCompatActivity() {
 
     // X lista esercizi (RecycleView)
 
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView: RecyclerView //Ui della lista
     private lateinit var filteredList: ArrayList<ExerciseModel> //Lista filtrata
     private lateinit var adapter: ExerciseAdapter
     private lateinit var exerciseList: ArrayList<ExerciseModel>
@@ -28,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var auth : FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -70,7 +72,7 @@ class HomeActivity : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         val name = user?.displayName
 
-        txtWelcome.text = "Ciao, ${name ?: "utente"}!"
+        txtWelcome.text = "Ciao, ${name ?: "utente"}!" //Nome è nullo scrive utente
 
 
 
@@ -79,16 +81,6 @@ class HomeActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-
-
-
-
-
-        // Continuare ad aggiungere..
-
-
-
-
 
 
 
@@ -230,12 +222,10 @@ class HomeActivity : AppCompatActivity() {
             })
 
 
-
-
-
-
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = adapter
+
+
             val searchBar = findViewById<EditText>(R.id.searchBar)
         searchBar.addTextChangedListener(object : android.text.TextWatcher {
 
@@ -247,8 +237,7 @@ class HomeActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: android.text.Editable?) {}
-        })
-
+        }) // Quando scrivo sulla barra di ricerca si aggiorna sempre
 
 
 
@@ -264,7 +253,7 @@ class HomeActivity : AppCompatActivity() {
 
         }
 
-    // Ricerca
+    // Ricerca filtro lista esercizi
     private fun filter(text: String) {
 
         // Riparto da zero ogni volta

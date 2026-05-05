@@ -16,7 +16,7 @@ import kotlin.jvm.java
 // Prende la lista degli esercizi, listener per gestire il click sugli elementi
 // ViewHolder rappresenta un singolo elemento della lista (Infatti contiene nome e immagine dell'esercizio
 
-class ExerciseAdapter(
+class  ExerciseAdapter(
     private val exerciseList: ArrayList<ExerciseModel>, private val listener: OnItemClickListener) : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>()  {
     class ViewHolder(ItemView : View, listener: OnItemClickListener) : RecyclerView.ViewHolder(ItemView)
     {
@@ -33,7 +33,7 @@ class ExerciseAdapter(
     }
 
 
-    // Creata la view per ogni elemento attraverso item_exercise.xml
+    // Creata la riga vuota della lista
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_exercise, parent, false)
@@ -41,7 +41,7 @@ class ExerciseAdapter(
         return ViewHolder(view, listener)
     }
 
-    // Per ogniu posizione del recycle uso il nome e l'immagine dell'esercizio
+    // Riempie la riga con i dati dell'esercizio
     override fun onBindViewHolder(holder: ExerciseAdapter.ViewHolder, position: Int) {
         val exercise = exerciseList[position]
 

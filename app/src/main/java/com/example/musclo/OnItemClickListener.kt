@@ -4,4 +4,4 @@ package com.example.musclo
 
 interface OnItemClickListener {
     fun onItemClick(position: Int)
-}
+}//Interfaccia per gestire il click

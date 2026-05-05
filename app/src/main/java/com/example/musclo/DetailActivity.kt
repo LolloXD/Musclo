@@ -12,20 +12,27 @@ class DetailActivity : ComponentActivity() { // Parte all'interno degli esercizi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val imageView = findViewById<ImageView>(R.id.imgEsercizio)
+            val imageView = findViewById<ImageView>(R.id.imgEsercizio)
 
-        val resId = intent.getIntExtra("gif", 0)
-        val steps = intent.getStringExtra("steps")
+        val intent = intent //Serve per passare dati tra activity
 
-        val txtSteps = findViewById<TextView>(R.id.txtSteps)
-        txtSteps.text = steps
+
+        val resId = intent.getIntExtra("gif", 0) //gif dell'esercizio
+
+        val steps = intent.getStringExtra("steps") //Istruzioni dell'esercizio
+
+
+        val txtSteps = findViewById<TextView>(R.id.txtSteps) //Riporta le istruzioni dell'esercizio
+
+        txtSteps.text = steps //Salva le istruzioni dell'esercizio
+
 
         val musclesRes = intent.getIntExtra("muscles", 0)
 
         val imgMuscoli = findViewById<ImageView>(R.id.imgMuscoli)
-        imgMuscoli.setImageResource(musclesRes)
+        imgMuscoli.setImageResource(musclesRes) //mette immagine del muscolo corretto attraverso la grafica
 
-        Glide.with(this)
+        Glide.with(this) //libreria per caricare immagini/gif
             .asGif()
             .load(resId)
             .into(imageView)

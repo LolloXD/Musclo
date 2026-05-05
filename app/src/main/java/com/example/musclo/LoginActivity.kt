@@ -55,7 +55,9 @@ class LoginActivity : ComponentActivity() //Creiamo un attività che estende Com
         findViewById<Button>(R.id.register_btn).setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
-        }
+        } // Apre schermata di registrazione
+
+
 
         // Fino a qui google
 
@@ -66,9 +68,9 @@ class LoginActivity : ComponentActivity() //Creiamo un attività che estende Com
         val passwordInput = findViewById<EditText>(R.id.password_input)
         val loginBtn = findViewById<Button>(R.id.login_btn)
 
-        loginBtn.setOnClickListener {
+        loginBtn.setOnClickListener { //OnClick per il login
 
-            val email = emailInput.text.toString().trim()
+            val email = emailInput.text.toString().trim() //Prende email e password inserite dall'utente
             val password = passwordInput.text.toString().trim()
 
             if (email.isEmpty() || password.isEmpty()) {
@@ -103,6 +105,7 @@ class LoginActivity : ComponentActivity() //Creiamo un attività che estende Com
         launcher.launch(signInIntent)
     }
 
+    //Aprire la schermata di google
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
     {
         // Se login okay, ottieni l'account google
@@ -114,6 +117,7 @@ class LoginActivity : ComponentActivity() //Creiamo un attività che estende Com
         }
     }
 
+//Controlla se l'accesso è andato a buon fine
     private fun handleResults(task: Task<GoogleSignInAccount>) {
         // Account entrato
         if (task.isSuccessful)
